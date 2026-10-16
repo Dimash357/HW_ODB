@@ -1,8 +1,10 @@
 -- Laboratory Work 4
 -- Sarsen Dimash SIS-2412CS
 
+-- Task 1
 CREATE DATABASE "University";
 
+-- Task 2
 CREATE TABLE students (
     student_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     last_name VARCHAR(100) NOT NULL,
@@ -71,6 +73,7 @@ CREATE TABLE schedule (
     CONSTRAINT valid_schedule_time CHECK (start_time < end_time)
 );
 
+-- Task 3
 CREATE TABLE test_table (
     test_id INTEGER PRIMARY KEY,
     test_name VARCHAR(50)
@@ -78,5 +81,6 @@ CREATE TABLE test_table (
 
 ALTER TABLE test_table ADD COLUMN test_description VARCHAR(100);
 
+-- Task 4
 DROP TABLE test_table;
 
