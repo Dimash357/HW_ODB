@@ -5,6 +5,13 @@
 CREATE DATABASE "University";
 
 -- Task 2
+CREATE TABLE groups (
+    group_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    group_name VARCHAR(50) NOT NULL,
+    specialty VARCHAR(100) NOT NULL,
+    year_of_study INTEGER NOT NULL CHECK (year_of_study BETWEEN 1 AND 6)
+);
+
 CREATE TABLE students (
     student_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     last_name VARCHAR(100) NOT NULL,
@@ -15,6 +22,12 @@ CREATE TABLE students (
     group_id INTEGER NOT NULL REFERENCES groups(group_id)
 );
 
+CREATE TABLE departments (
+    department_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL,
+    faculty_name VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE teachers (
     teacher_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     last_name VARCHAR(100) NOT NULL,
@@ -23,19 +36,6 @@ CREATE TABLE teachers (
     phone_number VARCHAR(30),
     academic_degree VARCHAR(100),
     department_id INTEGER NOT NULL REFERENCES departments(department_id)
-);
-
-CREATE TABLE groups (
-    group_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    group_name VARCHAR(50) NOT NULL,
-    specialty VARCHAR(100) NOT NULL,
-    year_of_study INTEGER NOT NULL CHECK (year_of_study BETWEEN 1 AND 6)
-);
-
-CREATE TABLE departments (
-    department_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    department_name VARCHAR(100) NOT NULL,
-    faculty_name VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE classrooms (
